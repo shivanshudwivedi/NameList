@@ -1,26 +1,29 @@
-#FROM ubuntu:latest
-#LABEL authors="shivanshu"
+# Use the official lightweight Java image.
+# This image uses Debian Bullseye, which is the current stable release.
+FROM openjdk:21-slim as builder
 
-#Base image of JDK
-FROM openjdk:21-jdk-slim as build
+# Set the working directory inside the container
+WORKDIR application
 
-#Add a volume pointing to /tmp
-VOLUME /tmp
+# Copy the Gradle executable to the container
+COPY gradlew .
+COPY gradle gradle
 
-#Make port 8080 avaialbel to the world outside this container
-EXPOSE 8080
+# Copy Gradle build file
+COPY build.gradle.kts .
+COPY settings.gradle.kts .
 
-#The application's jar file
-ARG JAR_FILE=build/libs/*.jar
+# Copy source code
+COPY src src
 
-#Add the application's Jar to container
-ADD ${JAR_FILE} app.jar
+# Grant permissions for the gradlew executable
+RUN chmod +x ./gradlew
 
-#Run the jar file
-ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+# Build the application
+RUN ./gradlew build -x test
 
-
-
-
-
-#ENTRYPOINT ["top", "-b"]
+# Run the Spring Boot application
+FROM openjdk:21-slim
+WORKDIR application
+COPY --from=builder application/build/libs/*.jar application.jar
+ENTRYPOINT ["java", "-jar", "application.jar"]
