@@ -1,5 +1,5 @@
-# Use the official lightweight Java image.
-# This image uses Debian Bullseye, which is the current stable release.
+
+# Choose the jdk to build
 FROM openjdk:21-slim as builder
 
 # Set the working directory inside the container
