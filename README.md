@@ -24,10 +24,9 @@ I started to code by watching tutorials on Spring Boot from Spring's website. It
 ### Running with Docker
 
 1. **Build the Docker Image**
-   Navigate to the root directory of the project and run the following command to build a Docker image:
-'''
-docker build -t namelist-app .
-'''
+   Navigate to the root directory of the project and run the following command to build a Docker image.
+
+' docker build -t namelist-app . '
 
 2. **Run the Container**
    After the image has been successfully built, run your container using:
