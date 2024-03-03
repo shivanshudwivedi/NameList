@@ -9,5 +9,4 @@ public class NameListApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(NameListApplication.class, args);
 	}
-
 }
