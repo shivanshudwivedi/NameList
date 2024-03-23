@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: NameList
+  name: namelist
 spec:
   type: NodePort
   ports:
@@ -9,4 +9,4 @@ spec:
       nodePort: 31234
       protocol: TCP
   selector:
-    app: NameList
+    app: namelist
