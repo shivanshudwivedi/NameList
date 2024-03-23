@@ -2,6 +2,8 @@ package com.NameList.rest.webservices.NameList;
 
 import java.net.URI;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
 
 import nonapi.io.github.classgraph.json.JSONUtils;
 import org.springframework.http.ResponseEntity;
@@ -51,4 +53,27 @@ public class NameController {
         return ResponseEntity.ok(updatedName);
     }
 
+    //Creating a new config route that returns environment variables
+    @GetMapping("/config")
+    public Map<String, String> getConfig(){
+        Map<String, String> env = System.getenv();
+        System.out.println(env);
+        return env;
+    }
+
+    //Creating a new fibonacci route
+    @GetMapping("/fib")
+    public List<Integer> fibonacci(@RequestParam("length") int length){
+        List<Integer> fibonacciSequence = new ArrayList<>();
+        for(int i = 0; i < length; i++){
+            if(i == 0 || i == 1){
+                fibonacciSequence.add(1);
+            }
+            else{
+                fibonacciSequence.add(fibonacciSequence.get(i-1) + fibonacciSequence.get(i-2));
+            }
+        }
+        System.out.println(fibonacciSequence);
+        return fibonacciSequence;
+    }
 }

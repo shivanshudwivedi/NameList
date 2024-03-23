@@ -6,8 +6,8 @@ FROM openjdk:21-slim as builder
 WORKDIR application
 
 # Copy the Gradle executable to the container
-COPY gradlew .
 COPY gradle gradle
+COPY gradlew .
 
 # Copy Gradle build file
 COPY build.gradle.kts .
