@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: NameList
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: NameList
+  template:
+    metadata:
+      labels:
+        app: NameList
+    spec:
+      containers:
+        - name: NameList
+          image: config-app
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: NameList-config
