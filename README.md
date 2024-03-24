@@ -37,6 +37,21 @@ I started to code by watching tutorials on Spring Boot from Spring's website. It
 
 This command runs the application on port 8080.
 
+## Running with Kubernetes
+
+Run the following commands:
+
+### kubectl apply -f k8s/deployment.yaml
+### kubectl apply -f k8s/service.yaml
+### kubectl apply -f k8s/ConfigMap.yaml
+
+Now, to acccess the running pods, services and deployments
+### kubectl get pods,deployments,services
+
+To access the files through curl command
+### curl "localhost:31234/fib?length=18"
+### curl "localhost:31234/Config
+
 ### Accessing the Application
 
 ## http://localhost:8080/swagger-ui/index.html
