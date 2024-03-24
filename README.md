@@ -21,7 +21,7 @@ I started to code by watching tutorials on Spring Boot from Spring's website. It
 - Gradle
 - Docker
 
-### Running with Docker
+## Running with Docker
 
 1. **Build the Docker Image**
    Navigate to the root directory of the project and run the following command to build a Docker image.
