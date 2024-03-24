@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: namelist-config
 data:
-  DATA_MICROSERVICE: "MyOtherMicroservice"
+  DATA_MICROSERVICE: "MyOtherMircroservice"

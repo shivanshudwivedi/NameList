@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: namelist
-          image: config-app
+          image: shivanshudwivedi/config-map
           ports:
             - containerPort: 8080
           envFrom:
